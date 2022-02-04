@@ -1,11 +1,18 @@
 {
-  "name": "fucking-eu-cookies",
-  "version": "0.1.12",
-  "author": {
-    "name": "Jakub Bouček",
-    "email": "pan@jakubboucek.cz",
-    "url": "https://www.jakub-boucek.cz/"
-  },
+  "name": "smart-eu-cookies",
+  "version": "0.2.0",
+  "contributors": [
+    {
+      "name": "Jakub Bouček",
+      "email": "pan@jakubboucek.cz",
+      "url": "https://www.jakub-boucek.cz/"
+    },
+    {
+      "name": "Honza Malík",
+      "email": "honzito@ecn.cz",
+      "url": "https://ecnstudio.cz/"
+    }
+  ],
   "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",
