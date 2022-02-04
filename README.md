@@ -1,11 +1,11 @@
-# Fucking EU cookies
-One-file zasraná hláška pro zasranou EU, v jednom scriptu, 1,5 kB, 1 request, TLS (SSL), asynchronní, bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
+# smart EU cookies
+One-file cookie consent, 1,5 kB, 1 request, TLS (SSL), asynchronní, bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
 
 ## Instalace
-Pro nainstalování tohoto rozšíření stačí stáhnout [poslední verzi scriptu](https://github.com/jakubboucek/fucking-eu-cookies/releases/latest),
+Pro nainstalování tohoto rozšíření stačí stáhnout [poslední verzi scriptu](https://github.com/honzito/smart-eu-cookies/releases/latest),
 ten umístit na svůj web a pak do HTML stránky vložit následující kód:
 ```html
-<script src="/cesta/k/souboru/fucking-eu-cookies-cz.js" async></script>
+<script src="/cesta/k/souboru/smart-eu-cookies-cz.js" async></script>
 ```
 Kód můžete vložit kamkoliv do stránky, ale nejlépe někam mezi `<head>` a `</head>`.
 
@@ -16,11 +16,11 @@ Takto nainstalovaná knihovna má funkce:
 * respektuje některá rozšíření pro automatické odsouhlasení.
 
 ## Úpravy vzhledu
-Vzhled lišty lze snadno upravit nastavením vlastností pro třídu `.fucking-eu-cookies`, abyste převážili výchozí nastavení, možná bude potřeba odkazovat se na `.fucking-eu-cookies.fucking-priority`.
+Vzhled lišty lze snadno upravit nastavením vlastností pro třídu `.smart-eu-cookies`, abyste převážili výchozí nastavení, možná bude potřeba odkazovat se na `.smart-eu-cookies.smart-priority`.
 
 Příklad změny na fixní verzi – užitečné v situaci, kdy základní vzhled rozbíjí layout stránky:
 ```css
-.fucking-eu-cookies.fucking-priority {
+.smart-eu-cookies.smart-priority {
 	position: fixed;
 	left: 0;
 	bottom: 0;
@@ -28,16 +28,16 @@ Příklad změny na fixní verzi – užitečné v situaci, kdy základní vzhle
 	box-sizing: border-box;
 }
 ```
-Obdobně můžete upravit i následující prvky: `.fucking-eu-cookies.fucking-priority span` pro text, `.fucking-eu-cookies.fucking-priority a` pro odkaz na *Více informací* a `.fucking-eu-cookies.fucking-priority button` pro tlačítko.
+Obdobně můžete upravit i následující prvky: `.smart-eu-cookies.smart-priority span` pro text, `.smart-eu-cookies.smart-priority a` pro odkaz na *Více informací* a `.smart-eu-cookies.smart-priority button` pro tlačítko.
 
 ## Úpravy funkčnosti
-Lištu lze konfigurovat pomocí konfigurační proměnné `fucking_eu_config`.
+Lištu lze konfigurovat pomocí konfigurační proměnné `smart_eu_config`.
 
 ### Změny textace
 Textaci lze konfigurovat parametrem `l18n`, tedy např. změna popisu tlačítka:
 ```html
 <script>
-	var fucking_eu_config = {
+	var smart_eu_config = {
 		"l18n": {
 			"accept": "OK"
 		}
@@ -50,7 +50,7 @@ Takto lze přepsat všechny výchozí hodnoty ze souboru [source/l18n.cz.json](s
 Chování lze konfigurovat parametrem `options`, tedy např. zobrazování informací v novém okně:
 ```html
 <script>
-	var fucking_eu_config = {
+	var smart_eu_config = {
 		"options": {
 			"popupMore": true
 		}
@@ -64,7 +64,7 @@ Ve výchozím nastavení se lišta vykresluje na na začátek stránky (jako prv
 **Upozornění:** Pokud nebude element s daným ID v DOM stránky nalezen, lišta se nezobrazí, ale nezobrazí se žádné varování.
 ```html
 <script>
-	var fucking_eu_config = {
+	var smart_eu_config = {
 		"options": {
 			"insertTo": "myPlaceForCookie"
 		}
@@ -85,7 +85,7 @@ Callback předává dva parametry, `action` s názvem události (možné hodnoty
 		console.log(action, label);
 		// Example output: 'no-show', 'unsupported browser'
 	}
-	var fucking_eu_config = {
+	var smart_eu_config = {
 		"options": {
 			"callback": myCallback
 		}
@@ -93,16 +93,16 @@ Callback předává dva parametry, `action` s názvem události (možné hodnoty
 </script>
 ```
 
-Do Google Tag Manageru pak provolává event nazvaný `fucking-eu-cookies` se stejnými parametry jako Callback. Příklad:
+Do Google Tag Manageru pak provolává event nazvaný `smart-eu-cookies` se stejnými parametry jako Callback. Příklad:
 ```html
 <script>
 	var dataLayer = [];
-	var fucking_eu_config = {
+	var smart_eu_config = {
 		"options": {
 			"dataLayerName": 'dataLayer' // Note: input variable name (in 'quotes'), no variable directly
 		}
 	};
-	// Example event values: {event: 'fucking-eu-cookies', action: 'no-show', label: 'unsupported browser'}
+	// Example event values: {event: 'smart-eu-cookies', action: 'no-show', label: 'unsupported browser'}
 </script>
 ```
 Více o použití proměnné `dataLayer` v GTM najdete v [dokumentaci](https://developers.google.com/tag-manager/devguide?hl=en#events) a nebo v článku [Variable Guide](http://www.simoahava.com/analytics/variable-guide-google-tag-manager/).
@@ -110,9 +110,9 @@ Více o použití proměnné `dataLayer` v GTM najdete v [dokumentaci](https://d
 Tento kód uveďte vždy před voláním lišty, tedy např.:
 ```html
 <script>
-	var fucking_eu_config = { … };
+	var smart_eu_config = { … };
 </script>
-<script src="/cesta/k/souboru/fucking-eu-cookies-cz.js" async></script>
+<script src="/cesta/k/souboru/smart-eu-cookies-cz.js" async></script>
 
 ```
 
@@ -138,7 +138,7 @@ Záleží mi na tom, aby se ani ve starších verzích nic nerozbilo. Pokud se l
 Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor byl v koncových stanicích ukládán co nejdéle. Výhodou je velmi rychlé načítání. Nevýhodou je poměrně velký rozptyl verzí, které mohou mít v jednom okamžiku uživatelé na počítači. Při modifikacích a ovládání lišty dbejte na doporučení v návodech, které zohledňují zpětnou kompatibilitu.
 
 ## Changelist
-Look here: https://github.com/jakubboucek/fucking-eu-cookies/releases
+Look here: https://github.com/jakubboucek/smart-eu-cookies/releases
 
 ## Poděkování
 * [Davidovi Grudlovi](https://davidgrudl.com/) za nakopnutí článkem [Jak na souhlas s cookie ve zkurvené EU](https://phpfashion.com/jak-na-souhlas-s-cookie-ve-zkurvene-eu),

@@ -1,6 +1,6 @@
 (function(w, d){
-	var identificator = 'fucking-eu-cookies';
-	var userVariable = 'fucking_eu_config';
+	var identificator = 'smart-eu-cookies';
+	var userVariable = 'smart_eu_config';
 	var noShowEvent = 'no-show';
 	var showEvent = 'show';
 	var hideEvent = 'hide';
@@ -50,7 +50,7 @@
 			d.addEventListener( DOMContentLoaded, completed, false );
 			w.addEventListener( load, completed, false );
 		}
-	};
+	}
 
 	function completed() {
 		d.removeEventListener( DOMContentLoaded, completed, false );
@@ -62,12 +62,13 @@
 		invokeEvent(showEvent);
 
 		var html = '<span>%t <a href="%l">%m</a></span> '+
-		'<button>%a</button>';
+            '<button id="smart-eu-disagree">%d</button><button id="smart-eu-accept">%a</button>';
 		html = html
 			.replace('%t', config.l18n.text)
 			.replace('%l', config.l18n.link)
 			.replace('%m', config.l18n.more)
-			.replace('%a', config.l18n.accept);
+            .replace('%a', config.l18n.accept)
+            .replace('%d', config.l18n.disagree);
 		var body = d.body;
 		var head = d.head;
 		var style = document.createElement('style');
@@ -75,8 +76,9 @@
 		style.appendChild(d.createTextNode(includes.css));
 
 		var div = d.createElement('div');
-		div.className = identificator + ' fucking-priority';
+		div.className = identificator + ' smart-priority';
 		div.setAttribute('data-version', includes.version);
+        div.setAttribute('data-nosnippet', 'data-nosnippet');
 		div.innerHTML = html;
 		head.appendChild(style);
 		var insertTo = config.options.insertTo;
@@ -88,7 +90,8 @@
 		} else if (targetElement = document.getElementById(insertTo)) {
 			targetElement.insertBefore(div, null);
 		}
-		div.getElementsByTagName('button')[0].addEventListener(click, function(){ consent( div ); });
+        document.getElementById('smart-eu-accept').addEventListener(click, function(){ consent( div, true ); });
+        document.getElementById('smart-eu-disagree').addEventListener(click, function(){ consent( div, false); });
 		var a = div.getElementsByTagName('a')[0];
 		a.addEventListener(click, function(){ invokeEvent('open-more'); });
 		if(config.options.popupMore) {
@@ -127,10 +130,20 @@
 		}
 	}
 
-	function consent( div ) {
+    function consent( div, ok ) {
 		div.parentNode.removeChild( div );
-		invokeEvent(hideEvent, consentReason);
-		addCookie();
+        if (ok) {
+		    invokeEvent(hideEvent, consentReason);
+        }
+        addCookie( ok ? '1' : '0' );
+        var gt = ok ? 'granted' : 'denied';
+        if (typeof(gtag) === 'function') {
+            gtag('consent', 'update', {
+                'ad_storage': gt,
+                'analytics_storage': gt,
+                'personalization_storage': gt
+            });
+        }
 	}
 
 	function addCookie( reason ) {

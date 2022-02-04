@@ -1,6 +1,7 @@
 {
-	"text": "Tento web používá k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním tohoto webu s tím souhlasíte.",
+	"text": "Tento web by rád používal k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie.",
 	"accept": "Souhlasím",
+	"disagree": "Nesouhlasím",
 	"more": "Více informací",
 	"link": "https://policies.google.com/technologies/cookies?hl=cs"
 }
