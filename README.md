@@ -44,7 +44,7 @@ Textaci lze konfigurovat parametrem `l18n`, tedy např. změna popisu tlačítka
 	};
 </script>
 ```
-Takto lze přepsat všechny výchozí hodnoty ze souboru [source/l18n.cz.json](source/l18n.cz.json).
+Takto lze přepsat všechny výchozí hodnoty.
 
 ### Nastavení chování
 Chování lze konfigurovat parametrem `options`, tedy např. zobrazování informací v novém okně:
@@ -57,7 +57,7 @@ Chování lze konfigurovat parametrem `options`, tedy např. zobrazování infor
 	};
 </script>
 ```
-Takto lze přepsat všechny výchozí hodnoty ze souboru [source/options.json](source/options.json).
+Takto lze přepsat všechny výchozí hodnoty.
 
 #### Umístění lišty v kódu
 Ve výchozím nastavení se lišta vykresluje na na začátek stránky (jako první potomek `<body>`), parametrem `insertTo` lze upravit toto chování. Pokud hodnotu nastavíte na `'body-begin'` nebo `'body-end'`, vloží se lišta na začátek/konec stránky. Pokud zadáte jinou hodnotu, zkusí se najít takový element podle `id` a vloží lištu na jeho konec.  
@@ -112,7 +112,7 @@ Tento kód uveďte vždy před voláním lišty, tedy např.:
 <script>
 	var smart_eu_config = { … };
 </script>
-<script src="/cesta/k/souboru/smart-eu-cookies-cz.js" async></script>
+<script src="/cesta/k/souboru/smart-eu-cookies.min.js" async></script>
 
 ```
 
