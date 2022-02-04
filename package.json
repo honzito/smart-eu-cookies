@@ -1,16 +1,16 @@
 {
   "name": "smart-eu-cookies",
-  "version": "0.2.0",
+  "version": "0.9.0",
   "contributors": [
-    {
-      "name": "Jakub Bouček",
-      "email": "pan@jakubboucek.cz",
-      "url": "https://www.jakub-boucek.cz/"
-    },
     {
       "name": "Honza Malík",
       "email": "honzito@ecn.cz",
       "url": "https://ecnstudio.cz/"
+    },
+    {
+      "name": "Jakub Bouček",
+      "email": "pan@jakubboucek.cz",
+      "url": "https://www.jakub-boucek.cz/"
     }
   ],
   "license": "MIT"
