@@ -138,9 +138,10 @@ Záleží mi na tom, aby se ani ve starších verzích nic nerozbilo. Pokud se l
 Připojovaný soubor má nastaveno velmi dlouhé cachování, aby tento soubor byl v koncových stanicích ukládán co nejdéle. Výhodou je velmi rychlé načítání. Nevýhodou je poměrně velký rozptyl verzí, které mohou mít v jednom okamžiku uživatelé na počítači. Při modifikacích a ovládání lišty dbejte na doporučení v návodech, které zohledňují zpětnou kompatibilitu.
 
 ## Changelist
-Look here: https://github.com/jakubboucek/smart-eu-cookies/releases
+Look here: https://github.com/honzito/smart-eu-cookies/releases
 
 ## Poděkování
+* [Jakubovi Boučkovi](https://www.jakub-boucek.cz/), který to celé naprogramoval a provozoval,
 * [Davidovi Grudlovi](https://davidgrudl.com/) za nakopnutí článkem [Jak na souhlas s cookie ve zkurvené EU](https://phpfashion.com/jak-na-souhlas-s-cookie-ve-zkurvene-eu),
 * [Michalovi Špačkovi](https://www.michalspacek.cz) za tip na bonznutí lišty do různých AdBlocků (připomínám: záměr je co nejméně obtěžovat uživatele),
 * [Bohumilu Jahodovi](http://jecas.cz/) za [upozornění](https://twitter.com/Jahoda/status/633970094218080257) za nepříjmenou chybu.
