@@ -1,31 +1,34 @@
 # smart EU cookies
-One-file cookie consent, 1,5 kB, 1 request, TLS (SSL), asynchronní, bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
+One-file cookie consent, 2,2 kB, 1 request, TLS (SSL), asynchronní, bez závislosti na jQuery, s podporou Tag manageru a navrženo se záměrem nejméně obtěžovat uživatele.
 
 ## Instalace
 Pro nainstalování tohoto rozšíření stačí stáhnout [poslední verzi scriptu](https://github.com/honzito/smart-eu-cookies/releases/latest),
 ten umístit na svůj web a pak do HTML stránky vložit následující kód:
 ```html
-<script src="/cesta/k/souboru/smart-eu-cookies-cz.js" async></script>
+<script src="/cesta/k/souboru/smart-eu-cookies.js" async></script>
+<script src="https://cdn.jsdelivr.net/gh/honzito/smart-eu-cookies@latest/src/smart-eu-cookies.min.js" async></script>
 ```
 Kód můžete vložit kamkoliv do stránky, ale nejlépe někam mezi `<head>` a `</head>`.
 
 Takto nainstalovaná knihovna má funkce:
-* zobrazení lišty v horní části stránky,
-* poučení uživatele o ukládání cookies, jak zasraná EU káže,
+* zobrazení lišty v dolní části stránky,
+* poučení uživatele o ukládání cookies, jak EU káže,
 * po stisknutí tlačítka souhlasu uložení cookie, aby se lišta po dobu 1 roku již nezobrazila,
 * respektuje některá rozšíření pro automatické odsouhlasení.
 
 ## Úpravy vzhledu
 Vzhled lišty lze snadno upravit nastavením vlastností pro třídu `.smart-eu-cookies`, abyste převážili výchozí nastavení, možná bude potřeba odkazovat se na `.smart-eu-cookies.smart-priority`.
 
-Příklad změny na fixní verzi – užitečné v situaci, kdy základní vzhled rozbíjí layout stránky:
+Příklad změny na ne-fixní verzi nahoře na stránce:
 ```css
 .smart-eu-cookies.smart-priority {
-	position: fixed;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	box-sizing: border-box;
+    position: relative;
+}
+```
+Příklad změny na větší - blokovou verzi:
+```css
+.smart-eu-cookies.smart-priority span {
+    flex: 1 0 100%;
 }
 ```
 Obdobně můžete upravit i následující prvky: `.smart-eu-cookies.smart-priority span` pro text, `.smart-eu-cookies.smart-priority a` pro odkaz na *Více informací* a `.smart-eu-cookies.smart-priority button` pro tlačítko.
@@ -39,7 +42,11 @@ Textaci lze konfigurovat parametrem `l18n`, tedy např. změna popisu tlačítka
 <script>
 	var smart_eu_config = {
 		"l18n": {
-			"accept": "OK"
+            "text": "Tento web by rád používal k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie.",
+            "accept": "OK",
+            "disagree": "Prosím ne",
+            "more": "Více informací",
+            "link": "https://policies.google.com/technologies/cookies?hl=cs"
 		}
 	};
 </script>
@@ -117,15 +124,12 @@ Tento kód uveďte vždy před voláním lišty, tedy např.:
 ```
 
 ## Obtěžování uživatele
-Uvědumuju si, že zasrané nařízení je zcela zbytečné a nesmyslné. Nedává mi proto smysl upozornění dělat obzvlášť výrazné a obtěžující.
-Z toho důvodu je lišta:
+Lišta je :
 * psaná malým písmem,
 * v nevýrazných barvách (které jsou převzaty z barev systémových lišt),
-* nemá fixní pozici, aby se dala odrolovat pryč,
 * respektuje některé nejoblíbenější rozšíření pro blokování reklam a takovýchto EU hlášek (má se za to, že instalací nástroje na jejich blokování již uživatel vyjádřil globálně plošný souhlas a je náležitě informován).
 
 ## Známé problémy
-Text splňuje zasrané požadavky zasrané EU s drobným nedostatkem, že cookies se pravděpodobně do počítače uživatele uloží dříve, než tento vyjádří souhlas, nebo než se s požadovanou informací seznámí. Lišta totiž **vytváření cookies neomezuje**, pouze zajišťuje informování uživatelů a získání jejich tichého souhlasu. Jednoduchost instalace je vykoupena právě tímto nedostatkem.
 
 Problémy zobrazení:
 * Na webech s obrázkem na pozadí stránky, které je pozicované vůči prvkům ve stránce, může lišta způsobit rozpad layoutu.
