@@ -11,7 +11,7 @@
     var click = 'click';
 
     var includes = {
-        "version": "0.2.0",
+        "version": "0.9.2",
         "css": ".smart-eu-cookies{display:flex;flex-wrap:wrap;justify-content:center;background:white;box-shadow:0 0 19px #000;align-items:baseline;color:#323232;padding:.7em 0;z-index:1000;position:fixed;bottom:0;width:100%;font:normal 14px sans-serif;left:0;right:0;}.smart-eu-cookies span{text-align:center;padding:13px 7px}.smart-eu-cookies button{font-size:13px;cursor:pointer;background:#000;color:white;border:1px solid black;margin:0 5px;padding:5px 15px;letter-spacing:.05em}.smart-eu-cookies button:hover{background:#000000}",
         "l18n": {
             "text": "Tento web by rád používal k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie.",
@@ -52,7 +52,6 @@
             invokeEvent(noShowEvent, 'unsupported browser');
             return;
         }
-
 
         if ( d.readyState === 'complete' ) {
             setTimeout( dry );
