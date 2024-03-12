@@ -54,7 +54,6 @@
         }
 
 
-
         if ( d.readyState === 'complete' ) {
             setTimeout( dry );
         } else {
@@ -72,28 +71,26 @@
     function dry(){
         invokeEvent(showEvent);
 
-        var html = '<span>%t <a href="%l">%m</a></span> '+
-            '<button id="smart-eu-disagree">%d</button><button id="smart-eu-accept">%a</button>';
+        let html = '<span>%t <a href="%l">%m</a></span> ' + '<button id="smart-eu-disagree">%d</button><button id="smart-eu-accept">%a</button>';
         html = html
             .replace('%t', config.l18n.text)
             .replace('%l', config.l18n.link)
             .replace('%m', config.l18n.more)
             .replace('%a', config.l18n.accept)
             .replace('%d', config.l18n.disagree);
-        var body = d.body;
-        var head = d.head;
-        var style = document.createElement('style');
-        style.type = 'text/css';
+        const body = d.body;
+        const head = d.head;
+        const style = document.createElement('style');
         style.appendChild(d.createTextNode(includes.css));
 
-        var div = d.createElement('div');
+        const div = d.createElement('div');
         div.className = identificator + ' smart-priority';
         div.setAttribute('data-version', includes.version);
         div.setAttribute('data-nosnippet', 'data-nosnippet');
         div.innerHTML = html;
         head.appendChild(style);
-        var insertTo = config.options.insertTo;
-        var targetElement;
+        const insertTo = config.options.insertTo;
+        let targetElement;
         if (insertTo === 'body-begin') {
             body.insertBefore(div, body.firstChild);
         } else if (insertTo === 'body-end') {
@@ -103,7 +100,7 @@
         }
         document.getElementById('smart-eu-accept').addEventListener(click, function(){ consent( div, true ); });
         document.getElementById('smart-eu-disagree').addEventListener(click, function(){ consent( div, false); });
-        var a = div.getElementsByTagName('a')[0];
+        const a = div.getElementsByTagName('a')[0];
         a.addEventListener(click, function(){ invokeEvent('open-more'); });
         if(config.options.popupMore) {
             a.setAttribute('target', '_blank');
@@ -131,7 +128,7 @@
         if (typeof(config.options.callback) === 'function') {
             config.options.callback( action, label );
         }
-        var dataLayer = config.options.dataLayerName;
+        const dataLayer = config.options.dataLayerName;
         if (dataLayer && w[dataLayer] && typeof(w[dataLayer].push) === 'function') {
             w[dataLayer].push({
                 'event': identificator,
@@ -147,13 +144,15 @@
             invokeEvent(hideEvent, consentReason);
         }
         addCookie( ok ? '1' : '0' );
-        var gt = ok ? 'granted' : 'denied';
+        const gt = ok ? 'granted' : 'denied';
         if (typeof(gtag) === 'function') {
             gtag('consent', 'update', {
                 'ad_storage': gt,
                 'analytics_storage': gt,
-                'personalization_storage': gt
-            });
+                'personalization_storage': gt,
+                'ad_personalization': gt,
+                'ad_user_data': gt
+            });    // updated to consent mode v2
         }
     }
 
@@ -161,9 +160,9 @@
         if (typeof reason === 'undefined') {
             reason = '1';
         }
-        var date = new Date();
+        const date = new Date();
         date.setFullYear(date.getFullYear() + 1);
-        var expires = '; expires=' + date.toGMTString();
+        const expires = '; expires=' + date.toGMTString();
         d.cookie = identificator + '=' + encodeURIComponent(reason) + expires + '; path=/';
     }
 
